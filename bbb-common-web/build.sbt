@@ -160,9 +160,7 @@ pomExtra := (
       <url>http://www.bigbluebutton.org</url>
     </developer>
   </developers>)
-  
+
 licenses := Seq("LGPL-3.0" -> url("http://opensource.org/licenses/LGPL-3.0"))
 
 homepage := Some(url("http://www.bigbluebutton.org"))
-  
-

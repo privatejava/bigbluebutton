@@ -47,16 +47,16 @@
       },
       "allowHTML5Moderator": true,
       "allowModeratorToUnmuteAudio": true,
-      "httpsConnection": false,
+      "httpsConnection": true,
       "connectionTimeout": 60000
     },
 
     "kurento": {
-      "wsUrl": "HOST",
+      "wsUrl": "wss://live.tutortone.com:8433",
       "chromeExtensionKey": "KEY",
       "chromeExtensionLink": "LINK",
-      "enableScreensharing": false,
-      "enableVideo": false
+      "enableScreensharing": true,
+      "enableVideo": true
     },
 
     "acl": {
@@ -134,7 +134,7 @@
 
     "media": {
       "WebRTCHangupRetryInterval": 2000,
-      "vertoServerAddress": "HOST",
+      "vertoServerAddress": "live.tutortone.com",
       "freeswitchProfilePassword": "1234",
       "vertoPort": "8082",
       "useSIPAudio": true,
