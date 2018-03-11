@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
+import Settings from '/imports/ui/services/settings';
+import Meetings from '/imports/api/meetings/';
+import Auth from '/imports/ui/services/auth';
 import Media from './component';
 import MediaService from './service';
 import PresentationAreaContainer from '../presentation/container';
@@ -8,7 +11,7 @@ import ScreenshareContainer from '../screenshare/container';
 import DefaultContent from '../presentation/default-content/component';
 
 const defaultProps = {
-  overlay: <VideoDockContainer />,
+  overlay: null,
   content: <PresentationAreaContainer />,
   defaultContent: <DefaultContent />,
 };
@@ -38,23 +41,26 @@ class MediaContainer extends Component {
 
   handleToggleLayout() {
     const { overlay, content } = this.state;
+
     this.setState({ overlay: content, content: overlay });
   }
 
   render() {
-    return (
-      <Media {...this.props}>
-        {this.props.children}
-      </Media>
-    );
+    return <Media {...this.props}>{this.props.children}</Media>;
   }
 }
 
 MediaContainer.defaultProps = defaultProps;
 
 export default withTracker(() => {
+  const { dataSaving } = Settings;
+  const { viewParticipantsWebcams: viewVideoDock, viewScreenshare } = dataSaving;
+
   const data = {};
   data.currentPresentation = MediaService.getPresentationInfo();
+
+  const meeting = Meetings.findOne({ meetingId: Auth.meetingID });
+  const webcamOnlyModerator = meeting.usersProp.webcamsOnlyForModerator;
 
   data.content = <DefaultContent />;
 
@@ -62,11 +68,11 @@ export default withTracker(() => {
     data.content = <PresentationAreaContainer />;
   }
 
-  if (MediaService.shouldShowScreenshare()) {
+  if (MediaService.shouldShowScreenshare() && (viewScreenshare || MediaService.isUserPresenter())) {
     data.content = <ScreenshareContainer />;
   }
 
-  if (MediaService.shouldShowOverlay()) {
+  if (MediaService.shouldShowOverlay() && viewVideoDock && !webcamOnlyModerator) {
     data.overlay = <VideoDockContainer />;
   }
 
