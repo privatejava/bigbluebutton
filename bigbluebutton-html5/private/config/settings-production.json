@@ -11,7 +11,7 @@
       "appName": "BigBlueButton HTML5 Client",
       "bbbServerVersion": "2.0-rc",
       "copyright": "©2018 BigBlueButton Inc.",
-      "html5ClientBuild": "HTML5_CLIENT_VERSION",
+      "html5ClientBuild": "199",
       "lockOnJoin": true,
       "basename": "/html5client",
       "defaultSettings": {
@@ -53,11 +53,11 @@
     },
 
     "kurento": {
-      "wsUrl": "HOST",
+      "wsUrl": "wss://live.tutortone.com/bbb-webrtc-sfu",
       "chromeExtensionKey": "KEY",
       "chromeExtensionLink": "LINK",
-      "enableScreensharing": false,
-      "enableVideo": false
+      "enableScreensharing": true,
+      "enableVideo": true
     },
 
     "acl": {
@@ -136,7 +136,7 @@
 
     "media": {
       "WebRTCHangupRetryInterval": 2000,
-      "vertoServerAddress": "HOST",
+      "vertoServerAddress": "52.74.56.196",
       "freeswitchProfilePassword": "1234",
       "vertoPort": "8082",
       "useSIPAudio": true,
@@ -347,7 +347,7 @@
     },
 
     "log": {
-      "level": "info"
+      "level": "debug"
     }
   }
 }
