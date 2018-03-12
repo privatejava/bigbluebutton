@@ -106,13 +106,13 @@ class SettingsDropdown extends Component {
         description={intl.formatMessage(intlMessages.settingsDesc)}
         onClick={() => mountModal(<SettingsMenuContainer />)}
       />),
-      (<DropdownListItem
+      /* (<DropdownListItem
         key={_.uniqueId('list-item-')}
         icon="about"
         label={intl.formatMessage(intlMessages.aboutLabel)}
         description={intl.formatMessage(intlMessages.aboutDesc)}
         onClick={() => mountModal(<AboutContainer />)}
-      />),
+      />), */
       (<DropdownListSeparator key={_.uniqueId('list-separator-')} />),
       (<DropdownListItem
         key={_.uniqueId('list-item-')}
